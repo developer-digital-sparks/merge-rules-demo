@@ -1,7 +1,9 @@
 name: PR checks
 on:
   pull_request:
-  workflow_dispatch:
+  # A back-merge PR opened by the workflow token starts no PR run, so main's commits carry their own checks.
+  push:
+    branches: [main]
 permissions:
   contents: read
 jobs:
