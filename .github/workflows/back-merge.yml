@@ -5,7 +5,6 @@ on:
 permissions:
   contents: read
   pull-requests: write
-  actions: write
 concurrency:
   group: back-merge
   cancel-in-progress: false
@@ -36,5 +35,3 @@ jobs:
               --title "Back-merge main into staging" \
               --body "Brings main's changes back into staging. Use **Create a merge commit**, not squash."
           fi
-          # A PR opened with this token doesn't start PR checks, so start them on main's commit.
-          gh workflow run pr-checks.yml --ref main
